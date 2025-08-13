@@ -1,0 +1,72 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNO Multiplayer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Lobby Section -->
+    <div id="lobby" class="active">
+        <h1>UNO Multiplayer</h1>
+        <div class="form-group"><input type="text" id="username" placeholder="Enter your name" maxlength="15"></div>
+        <div class="form-group"><button id="create-room-btn">Create Room</button></div>
+        <hr>
+        <div class="form-group">
+            <input type="text" id="room-id-input" placeholder="Enter Room Code">
+            <button id="join-room-btn">Join Room</button>
+        </div>
+        <p id="error-message" class="error-text"></p>
+    </div>
+
+    <!-- Waiting Room Section -->
+    <div id="waiting-room">
+        <h2>Room Code: <span id="room-code"></span></h2>
+        <h3>Players in Lobby (2-4 recommended):</h3>
+        <ul id="player-list"></ul>
+        <button id="start-game-btn" style="display: none;">Start Game</button>
+    </div>
+
+    <!-- Game Table Section -->
+    <div id="game-table">
+        <div class="player-area opponent-area" id="opponent-container"></div>
+        <div class="table-middle">
+            <div class="deck-area">
+                <div id="draw-pile" class="card back"><span id="deck-count"></span></div>
+                <div id="discard-pile" class="card"><span></span></div>
+            </div>
+        </div>
+        <div class="player-area self-area">
+            <div class="player-name" id="self-player-name">Your Hand</div>
+            <div class="hand" id="player-hand"></div>
+        </div>
+    </div>
+
+    <!-- Wild Color Picker Modal -->
+    <div id="wild-color-picker" class="modal">
+        <div class="modal-content">
+            <h3>Choose a Color</h3>
+            <div class="color-choices">
+                <div class="color-choice Red" data-color="Red"></div>
+                <div class="color-choice Green" data-color="Green"></div>
+                <div class="color-choice Blue" data-color="Blue"></div>
+                <div class="color-choice Yellow" data-color="Yellow"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Winner Announcement Modal -->
+    <div id="winner-announcement" class="modal">
+        <div class="modal-content">
+            <h2 id="winner-name"></h2>
+            <p>Thanks for playing!</p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
